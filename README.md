@@ -9,4 +9,8 @@ Thymeleaf的初体验：
 3、测试功能：条件判断  
 
 4、测试功能：遍历————（1）、普通遍历   （2）、带状态的遍历   （3）、结合下拉框    （4）、结合单选框  
-
+# people 项目
+Thymeleaf的实践：  
+1、单个删除  
+listStaff.html【<a onclick="return del()" th:href="@{/deleteStaff(id=${staff.id})}">删除</a>】  
+2、
