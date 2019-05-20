@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all" href="../../css/style.css" th:href="@{/css/style.css}"/>
+    <script type="text/javascript" src="../../js/thymeleaf.js" th:src="@{/js/thymeleaf.js}"></script>
+     
+    <style>
+        h2{
+            text-decoration: underline;
+            font-size:0.9em;
+            color:gray;
+        }
+    </style>       
+</head>
+<body>
+ 
+<div class="showing">
+    <h2>遍历</h2>
+ 
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>产品名称</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user: ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.age}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+ 
+<div class="showing">
+    <h2>带状态遍历</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>index</th>
+                <th>id</th>
+                <th>产品名称</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:class="${status.even}?'even':'odd'" th:each="user,status: ${users}">
+                <td  th:text="${status.index}"></td>
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.age}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+ 
+<div class="showing">
+    <h2>遍历 select </h2>
+    <select size="3">
+        <option th:each="user:${users}" th:value="${user.id}"     th:selected="${user.id==currentUser.id}"    th:text="${user.name}" ></option>
+    </select>
+ 
+</div>
+ 
+<div class="showing">
+    <h2>遍历 radio </h2>
+    <input name="product" type="radio" th:each="user:${users}" th:value="${user.id}"  th:checked="${user.id==currentUser.id}"     th:text="${user.name}"  />
+ 
+</div>
+ 
+ 
+</body>
+ 
+</html>
