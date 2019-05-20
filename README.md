@@ -12,5 +12,5 @@ Thymeleaf的初体验：
 # people 项目
 Thymeleaf的实践：  
 1、单个删除  
-listStaff.html【<a onclick="return del()" th:href="@{/deleteStaff(id=${staff.id})}">删除】  
+listStaff.html【 onclick="return del()" th:href="@{/deleteStaff(id=${staff.id})}" 】  
 2、
