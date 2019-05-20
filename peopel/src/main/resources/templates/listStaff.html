@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:td="http://www.tdymeleaf.org" >
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<script type="text/javascript" src="../../js/deleteFunction.js" th:src="@{/js/deleteFunction.js}"></script>
+		<title>查看所有普通员工</title>
+	</head>
+<body>
+	<br/>
+	<table border='1' cellspacing='0' align="center">
+		<tr>
+			<td width="20px" align="center">id</td>
+			<td width="70px" align="center">名字</td>
+			<td width="55px" align="center">工资</td>
+			<td width="65px" align="center">所属经理</td>
+			<td width="100px" align="center">住址</td>
+			<td width="120px" align="center">联系方式</td>
+			<td width="100px" align="center">入职时间</td>
+			<td width="40px" align="center">编辑</td>
+			<td width="40px" align="center">删除</td>
+		</tr>
+		<tr th:each="staff: ${staffs}">
+			<td th:text="${staff.id}" width="20px" align="center"></td>
+			<td th:text="${staff.name}" width="70px" align="center"></td>
+			<td th:text="${staff.salary}" width="55px" align="center"></td>
+			<td th:text="${staff.section}" width="65px" align="center"></td>
+			<td th:text="${staff.location}" width="100px" align="center"></td>
+			<td th:text="${staff.tel}" width="120px" align="center"></td>
+			<td th:text="${staff.indate}" width="100px" align="center"></td>
+			<td width="40px" align="center">
+				<a th:href="@{/editStaff(id=${staff.id})}">编辑</a>
+			</td>
+			<td width="40px" align="center">
+				<a onclick="return del()" th:href="@{/deleteStaff(id=${staff.id})}">删除</a>
+			</td>
+		</tr>
+	</table>
+    <div align="center">
+    	<p>当前 <span th:text="${page.pageNum}"></span> 页，总 <span th:text="${page.pages}"></span> 页，共 <span th:text="${page.total}"></span> 条记录</p>
+    	<a th:href="@{/listStaff}">首页</a>
+    	<a th:href="@{/listStaff(start=${page.hasPreviousPage}?${page.prePage}:1)}">上一页</a>
+    	<a th:href="@{/listStaff(start=${page.hasNextPage}?${page.nextPage}:${page.pages})}">下一页</a>
+    	<a th:href="@{/listStaff(start=${page.pages})}">尾页</a>
+    </div>
+    <br>
+	
+</body>
+</html>

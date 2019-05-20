@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:td="http://www.tdymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>编辑</title>
+</head>
+<body>
+	<br/>
+	<a href="#" onClick="javascript:history.back()" >返回</a>
+	
+	<form th:action="@{/updateStaff}" method="post" align="center">
+		<input name="id" type="hidden" th:value="${staff_edit.id}">
+		真实姓名： <input name="name" type="text" th:value="${staff_edit.name}"> <br>
+		确切工资： <input name="salary" type="text" th:value="${staff_edit.salary}"> <br>
+		所属经理： <input name="section" type="text" th:value="${staff_edit.section}"> <br>
+		目前住址： <input name="location" type="text" th:value="${staff_edit.location}"> <br>
+		联系方式： <input name="tel" type="text" th:value="${staff_edit.tel}"> <br>
+		入职时间： <input name="indate" type="text" th:value="${staff_edit.indate}"> <br><br>
+		<button type="submit">提交</button>
+  </form>
+</body>
+</html>

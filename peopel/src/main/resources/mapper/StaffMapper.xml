@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.StaffMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.pojo.Staff">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="salary" jdbcType="INTEGER" property="salary" />
+    <result column="section" jdbcType="INTEGER" property="section" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="indate" jdbcType="VARCHAR" property="indate" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, name, salary, section, location, tel, indate
+  </sql>
+  
+  <select id="findStaff" parameterType="com.example.demo.pojo.Staff" resultType="com.example.demo.pojo.Staff">
+		select * from staff where 1=1
+		<if test="id != null and id != ''">
+			and id = #{id}
+		</if>
+		<if test="name != null and name != ''">
+			and name like concat('%',#{name},'%')
+		</if>
+		<if test="salary != null and salary!= ''">
+			and salary = #{salary}
+		</if>
+		<if test="section != null and section!= ''">
+			and section = #{section}
+		</if>
+		<if test="location != null and location != ''">
+			and location like concat('%',#{location},'%')
+		</if>
+		<if test="tel != null and tel != ''">
+			and tel like concat('%',#{tel},'%')
+		</if>
+		<if test="indate != null and indate != ''">
+			and indate like concat('%',#{indate},'%')
+		</if>
+  </select>
+  
+  <select id="selectByExample" parameterType="com.example.demo.pojo.StaffExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from staff
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from staff
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from staff
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.demo.pojo.Staff" useGeneratedKeys="true">
+    insert into staff (name, salary, section, 
+      location, tel, indate
+      )
+    values (#{name,jdbcType=VARCHAR}, #{salary,jdbcType=INTEGER}, #{section,jdbcType=INTEGER}, 
+      #{location,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{indate,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.example.demo.pojo.Staff" useGeneratedKeys="true">
+    insert into staff
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="salary != null">
+        salary,
+      </if>
+      <if test="section != null">
+        section,
+      </if>
+      <if test="location != null">
+        location,
+      </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="indate != null">
+        indate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="salary != null">
+        #{salary,jdbcType=INTEGER},
+      </if>
+      <if test="section != null">
+        #{section,jdbcType=INTEGER},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="indate != null">
+        #{indate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.pojo.Staff">
+    update staff
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="salary != null">
+        salary = #{salary,jdbcType=INTEGER},
+      </if>
+      <if test="section != null">
+        section = #{section,jdbcType=INTEGER},
+      </if>
+      <if test="location != null">
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="indate != null">
+        indate = #{indate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.pojo.Staff">
+    update staff
+    set name = #{name,jdbcType=VARCHAR},
+      salary = #{salary,jdbcType=INTEGER},
+      section = #{section,jdbcType=INTEGER},
+      location = #{location,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      indate = #{indate,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
