@@ -13,4 +13,6 @@ Thymeleaf的初体验：
 Thymeleaf的实践：  
 1、单个删除  
 listStaff.html【 onclick="return del()" th:href="@{/deleteStaff(id=${staff.id})}" 】  
-2、
+2、打印Session值  
+listStaff.html【 th:text="${session.editMess}" 】
+
