@@ -42,6 +42,32 @@
   <sql id="Base_Column_List">
     id, name, salary, section, location, tel, indate
   </sql>
+  
+  <select id="findManager" parameterType="com.example.demo.pojo.Manager" resultType="com.example.demo.pojo.Manager">
+		select * from manager where 1=1
+		<if test="id != null and id != ''">
+			and id = #{id}
+		</if>
+		<if test="name != null and name != ''">
+			and name like concat('%',#{name},'%')
+		</if>
+		<if test="salary != null and salary!= ''">
+			and salary = #{salary}
+		</if>
+		<if test="section != null and section!= ''">
+			and section like concat('%',#{location},'%')
+		</if>
+		<if test="location != null and location != ''">
+			and location like concat('%',#{location},'%')
+		</if>
+		<if test="tel != null and tel != ''">
+			and tel like concat('%',#{tel},'%')
+		</if>
+		<if test="indate != null and indate != ''">
+			and indate like concat('%',#{indate},'%')
+		</if>
+  </select>
+  
   <select id="selectByExample" parameterType="com.example.demo.pojo.ManagerExample" resultMap="BaseResultMap">
     select
     <if test="distinct">

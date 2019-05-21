@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>查找</title>
+</head>
+<body>
+	<br/>
+	<a href="#" onClick="javascript:history.back()" >返回</a>
+	
+	<form th:action="@{/findStaff}" method="post" align="center">
+		真实姓名： <input name="name" type="text" > <br>
+		确切工资： <input name="salary" type="text" > <br>
+		所属经理： <input name="section" type="text" > <br>
+		 目前住址： <input name="location" type="text" > <br>
+		联系方式： <input name="tel" type="text" > <br>
+		入职时间： <input name="indate" type="text" > <br><br>
+		<button type="submit">点击查找</button>
+  	</form><br/>
+  	<div align="center">查询结果如下：</div><br/>
+  	<table border='1' cellspacing='0' align="center">
+		<tr>
+			<td width="20px" align="center">id</td>
+			<td width="70px" align="center">名字</td>
+			<td width="55px" align="center">工资</td>
+			<td width="65px" align="center">所属经理</td>
+			<td width="100px" align="center">住址</td>
+			<td width="120px" align="center">联系方式</td>
+			<td width="100px" align="center">入职时间</td>
+			<td width="40px" align="center">编辑</td>
+			<td width="40px" align="center">删除</td>
+		</tr>
+		<tr th:each="staff: ${session.staffsFind}">
+			<td th:text="${staff.id}" width="20px" align="center"></td>
+			<td th:text="${staff.name}" width="70px" align="center"></td>
+			<td th:text="${staff.salary}" width="55px" align="center"></td>
+			<td th:text="${staff.section}" width="65px" align="center"></td>
+			<td th:text="${staff.location}" width="100px" align="center"></td>
+			<td th:text="${staff.tel}" width="120px" align="center"></td>
+			<td th:text="${staff.indate}" width="100px" align="center"></td>
+			<td width="40px" align="center">
+				<a th:href="@{/editStaff(id=${staff.id})}">编辑</a>
+			</td>
+			<td width="40px" align="center">
+				<a onclick="return del()" th:href="@{/deleteStaff(id=${staff.id})}">删除</a>
+			</td>
+		</tr>
+	</table>
+	<br/><br/>
+	<table border='1' cellspacing='0' align="center">
+		<tr>
+			<td width="20px" align="center">id</td>
+			<td width="70px" align="center">名字</td>
+			<td width="70px" align="center">部门</td>
+		</tr>
+		<tr th:each="manager: ${managersFind}">
+			<td th:text="${manager.id}" width="20px" align="center"></td>
+			<td th:text="${manager.name}" width="70px" align="center"></td>
+			<td th:text="${manager.section}" width="70px" align="center"></td>
+		</tr>
+	</table>
+    <div align="center">
+    	<p>当前 <span th:text="${pageFind.pageNum}"></span> 页，总 <span th:text="${pageFind.pages}"></span> 页，共 <span th:text="${pageFind.total}"></span> 条记录</p>
+    	<a th:href="@{/toFindStaff}">首页</a>
+    	<a th:href="@{/toFindStaff(start=${pageFind.hasPreviousPage}?${pageFind.prePage}:1)}">上一页</a>
+    	<a th:href="@{/toFindStaff(start=${pageFind.hasNextPage}?${pageFind.nextPage}:${pageFind.pages})}">下一页</a>
+    	<a th:href="@{/toFindStaff(start=${pageFind.pages})}">尾页</a>
+    </div>
+    <br>
+</body>
+</html>

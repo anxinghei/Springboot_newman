@@ -2,6 +2,8 @@ package com.example.demo.mapper;
 
 import com.example.demo.pojo.Manager;
 import com.example.demo.pojo.ManagerExample;
+import com.example.demo.pojo.Staff;
+
 import java.util.List;
 
 public interface ManagerMapper {
@@ -18,4 +20,6 @@ public interface ManagerMapper {
     int updateByPrimaryKeySelective(Manager record);
 
     int updateByPrimaryKey(Manager record);
+    
+    List<Manager> findManager(Manager manager);
 }

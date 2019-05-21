@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:td="http://www.tdymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>添加普通员工</title>
+</head>
+<body>
+	<br/>
+	<a href="#" onClick="javascript:history.back()" >返回</a>
+	
+	<form th:action="@{/addStaff}" method="post" align="center">
+		* 真实姓名： <input name="name" type="text" > <br>
+		* 确切工资： <input name="salary" type="text" > <br>
+		* 所属经理： <input name="section" type="text" > <br>
+		   目前住址： <input name="location" type="text" > <br>
+		* 联系方式： <input name="tel" type="text" > <br>
+		* 入职时间： <input name="indate" type="text" > <br><br>
+		<button type="submit">提交</button>
+  </form><br/>
+  <table border='1' cellspacing='0' align="center">
+		<tr>
+			<td width="20px" align="center">id</td>
+			<td width="70px" align="center">名字</td>
+			<td width="70px" align="center">部门</td>
+		</tr>
+		<tr th:each="manager: ${managers}">
+			<td th:text="${manager.id}" width="20px" align="center"></td>
+			<td th:text="${manager.name}" width="70px" align="center"></td>
+			<td th:text="${manager.section}" width="70px" align="center"></td>
+		</tr>
+	</table>
+    <div align="center">
+    	<p>当前 <span th:text="${pagem.pageNum}"></span> 页，总 <span th:text="${pagem.pages}"></span> 页，共 <span th:text="${pagem.total}"></span> 条记录</p>
+    	<a th:href="@{/toAddStaff}">首页</a>
+    	<a th:href="@{/toAddStaff(start=${pagem.hasPreviousPage}?${pagem.prePage}:1)}">上一页</a>
+    	<a th:href="@{/toAddStaff(start=${pagem.hasNextPage}?${pagem.nextPage}:${pagem.pages})}">下一页</a>
+    	<a th:href="@{/toAddStaff(start=${pagem.pages})}">尾页</a>
+    </div>
+    <br>
+</body>
+</html>
