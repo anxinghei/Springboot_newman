@@ -23,4 +23,5 @@ public interface StaffMapper {
     int updateByPrimaryKey(Staff record);
     
     List<Staff> findStaff(Staff staff);
+    
 }

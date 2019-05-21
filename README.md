@@ -13,18 +13,26 @@ Thymeleaf的初体验：
 5、测试功能：遍历————（1）、普通遍历   （2）、带状态的遍历   （3）、结合下拉框    （4）、结合单选框  
   
 # people 项目
-Thymeleaf的实战： 
+Thymeleaf实战（简单的人事管理系统）： 
   
-1、超链接  
-listStaff.html【 th:href="@{/deleteStaff(id=${staff.id})}" 】
+1、超链接（无参，有参看下一点）  
+listStaff.html【th:href="@{/toAddStaff}"】
   
-2、单个删除  
-listStaff.html【 onclick="return del()" th:href="@{/deleteStaff(id=${staff.id})}" 】  
+2、按钮功能：确认删除  
+listStaff.html【onclick="return del()" th:href="@{/deleteStaff(id=${staff.id})}"】  
   
 3、打印Session值  
-listStaff.html【 th:text="${session.editMess}" 】  
+listStaff.html【th:text="${session.editMess}"】  
   
 4、id（数字）判断  
 page.html【th:if="${manager.id > 1}"】  
   
-5、
+5、历史回退  
+page.html【onClick="javascript:history.back()"】  
+  
+6、表单动作  
+editStaff.html【th:action="@{/updateStaff}" method="post"】  
+  
+7、输入项默认值  
+editStaff.html【type="text" th:value="${staff_edit.name}】  
+

@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.pojo.Manager;
+import com.example.demo.pojo.Staff;
 import com.example.demo.pojo.Manager;
 import com.example.demo.service.ManagerService;
+import com.example.demo.service.StaffService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -22,6 +24,8 @@ public class BossController {
 
 	@Autowired
 	private ManagerService managerService;
+	@Autowired
+	private StaffService staffService;
 
 // 分页遍历所有经理
 	@RequestMapping("/listManager")
@@ -51,6 +55,13 @@ public class BossController {
 	@RequestMapping("/deleteManager")
 	public String deleteManager(int id, HttpSession session) {
 		managerService.deleteManager(id);
+		List<Staff> staffs=staffService.findStaffBySection(id);
+		if(staffs!=null) {
+			for(Staff staff:staffs) {
+				staff.setSection(1);
+				staffService.updateStaff(staff);
+			}	
+		}
 		session.setAttribute("editManager", "成功删除一条经理信息");
 		return "redirect:/listManager";
 	}

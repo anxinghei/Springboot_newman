@@ -41,4 +41,10 @@ public class StaffService {
 	public void addStaff(Staff staff) {
 		staffMapper.insertSelective(staff);
 	}
+	
+	public List<Staff> findStaffBySection(int section){
+		StaffExample staffExample=new StaffExample();
+		staffExample.createCriteria().andSectionEqualTo(section);
+		return staffMapper.selectByExample(staffExample);
+	}
 }
