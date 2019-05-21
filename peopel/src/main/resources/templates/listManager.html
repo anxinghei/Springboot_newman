@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:td="http://www.tdymeleaf.org" >
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<script type="text/javascript" src="../../js/deleteFunction.js" th:src="@{/js/deleteFunction.js}"></script>
+		<title>查看所有经理</title>
+	</head>
+<body>
+
+	<div th:replace="page::back" ></div>
+	
+	<p th:text="${session.editManager}">Update||Delete||Add</p>
+	
+	<div th:replace="page::managersTable" ></div>
+	
+    <div th:replace="page::page_listManager" ></div>
+    
+    <br><br>
+    
+	<div align="center">
+		<a th:href="@{/toAddManager}">新增一个部门经理</a>
+	</div><br>
+	<div align="center">
+		<a th:href="@{/toFindManager}">根据特征查找经理</a>
+	</div><br>
+	<div align="center">
+		<a th:href="@{/toFindStaff}">根据特征查找员工</a>
+	</div><br>
+	<div align="center">
+		<a th:href="@{/listStaff}">查看所有普通员工</a>
+	</div><br>
+	
+</body>
+</html>

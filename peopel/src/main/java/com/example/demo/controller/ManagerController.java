@@ -92,10 +92,4 @@ public class ManagerController {
 		session.setAttribute("staffsFind", staffs);
 		return "redirect:/toFindStaff";
 	}
-	
-	@RequestMapping("/main")
-	public String toMain(HttpSession session) {
-		session.setAttribute("editMess","");
-		return "main";
-	}
 }

@@ -45,7 +45,13 @@
     	<a th:href="@{/listStaff(start=${page.hasNextPage}?${page.nextPage}:${page.pages})}">下一页</a>
     	<a th:href="@{/listStaff(start=${page.pages})}">尾页</a>
     </div>
-    <br>
+    <br><br>
+	<div align="center">
+		<a th:href="@{/toAddStaff}">添加员工</a>
+	</div><br>
+	<div align="center">
+		<a th:href="@{/toFindStaff}">查找员工</a>
+	</div>
 	
 </body>
 </html>

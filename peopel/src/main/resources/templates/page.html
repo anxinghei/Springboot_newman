@@ -1,0 +1,52 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<footer th:fragment="back">
+	<br/>
+	<a href="#" onClick="javascript:history.back()" >返回</a><br/>
+</footer>
+
+<footer th:fragment="managersTable"> 
+   <table border='1' cellspacing='0' align="center">
+		<tr>
+			<td width="20px" align="center">id</td>
+			<td width="70px" align="center">名字</td>
+			<td width="55px" align="center">工资</td>
+			<td width="65px" align="center">管理部门</td>
+			<td width="100px" align="center">住址</td>
+			<td width="120px" align="center">联系方式</td>
+			<td width="100px" align="center">入职时间</td>
+			<td width="40px" align="center">编辑</td>
+			<td width="40px" align="center">删除</td>
+		</tr>
+		<tr th:each="manager: ${managers}">
+			<td th:text="${manager.id}" width="20px" align="center"></td>
+			<td th:text="${manager.name}" width="70px" align="center"></td>
+			<td th:text="${manager.salary}" width="55px" align="center"></td>
+			<td th:text="${manager.section}" width="65px" align="center"></td>
+			<td th:text="${manager.location}" width="100px" align="center"></td>
+			<td th:text="${manager.tel}" width="120px" align="center"></td>
+			<td th:text="${manager.indate}" width="100px" align="center"></td>
+			<td width="40px" align="center">
+				<a th:if="${manager.id > 1}" th:href="@{/editManager(id=${manager.id})}">编辑</a>
+			</td>
+			<td width="40px" align="center">
+				<a th:if="${manager.id > 1}" onclick="return del()" th:href="@{/deleteManager(id=${manager.id})}">删除</a>
+			</td>
+		</tr>
+	</table>
+</footer>
+
+<footer th:fragment="page_listManager"> 
+  <div align="center">
+    	<p>当前 <span th:text="${page.pageNum}"></span> 页，总 <span th:text="${page.pages}"></span> 页，共 <span th:text="${page.total}"></span> 条记录</p>
+    	<a th:href="@{/listManager}">首页</a>
+    	<a th:href="@{/listManager(start=${page.hasPreviousPage}?${page.prePage}:1)}">上一页</a>
+    	<a th:href="@{/listManager(start=${page.hasNextPage}?${page.nextPage}:${page.pages})}">下一页</a>
+    	<a th:href="@{/listManager(start=${page.pages})}">尾页</a>
+    </div>
+</footer>
+
+
+</html>
+
+
