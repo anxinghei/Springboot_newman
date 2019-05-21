@@ -11,8 +11,12 @@ Thymeleaf的初体验：
 4、测试功能：遍历————（1）、普通遍历   （2）、带状态的遍历   （3）、结合下拉框    （4）、结合单选框  
 # people 项目
 Thymeleaf的实践：  
+
 1、单个删除  
-listStaff.html【 onclick="return del()" th:href="@{/deleteStaff(id=${staff.id})}" 】  
+listStaff.html【 onclick="return del()" th:href="@{/deleteStaff(id=${staff.id})}" 】    
+
 2、打印Session值  
-listStaff.html【 th:text="${session.editMess}" 】
+listStaff.html【 th:text="${session.editMess}" 】  
+  
+3、  
 
