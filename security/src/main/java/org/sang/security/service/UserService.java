@@ -19,6 +19,7 @@ public class UserService implements UserDetailsService {
             throw new UsernameNotFoundException("账户不存在!");
         }
         user.setRoles(userMapper.getUserRolesByUid(user.getId()));
+        System.out.println(user);
         return user;
     }
 }

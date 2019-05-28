@@ -35,4 +35,14 @@ editStaff.html【th:action="@{/updateStaff}" method="post"】
   
 7、输入项默认值  
 editStaff.html【type="text" th:value="${staff_edit.name}】  
-
+  
+# security 项目  
+Spring Security 安全设置：  
+  
+1、角色有默认前缀：ROLE_ ，没有添加则权限不足，访问403  
+  
+2、使用Thymeleaf，继承WebMvcConfigureAdapter重写addViewControllers方法  
+【registry.addViewController("/hello").setViewName("home")】  
+方可访问/hello请求跳转到home.html页面而不是404  
+  
+3、

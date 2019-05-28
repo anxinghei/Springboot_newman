@@ -23,10 +23,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+//        return NoOpPasswordEncoder.getInstance();
     }
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService);
+        auth.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder());
     }
 
     @Override
@@ -35,10 +36,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         	.antMatchers("/admin/**").hasRole("admin")
         	.antMatchers("/db/**").hasRole("dba")
         	.antMatchers("/user/**").hasRole("user")
+        	.antMatchers("/**").hasRole("dba")
         	.anyRequest().authenticated()
         	.and()
             .formLogin()
             .loginProcessingUrl("/login").permitAll()
+//            .defaultSuccessUrl("/admin/hello")
+            .defaultSuccessUrl("/hello")
             .and()
             .csrf().disable();
     }
