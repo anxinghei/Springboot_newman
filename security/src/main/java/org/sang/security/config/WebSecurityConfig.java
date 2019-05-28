@@ -1,5 +1,16 @@
 package org.sang.security.config;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.sang.security.handler.FailedHandler;
+import org.sang.security.handler.SuccessHandler;
 import org.sang.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -10,10 +21,14 @@ import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -41,8 +56,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         	.and()
             .formLogin()
             .loginProcessingUrl("/login").permitAll()
-//            .defaultSuccessUrl("/admin/hello")
-            .defaultSuccessUrl("/hello")
+//            .defaultSuccessUrl("/hello")
+            .successHandler(new SuccessHandler())
+//            .failureHandler(new FailedHandler())
+            .failureUrl("/login?error")
             .and()
             .csrf().disable();
     }
