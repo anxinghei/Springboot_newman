@@ -25,7 +25,6 @@ public class SuccessHandler extends SavedRequestAwareAuthenticationSuccessHandle
 //		out.write(om.writeValueAsString(map));
 //		out.flush();
 //		out.close();
-//		response.encodeRedirectURL("/hello");
 		response.sendRedirect("/hello");
 //		super.onAuthenticationSuccess(request, response, authentication);
 	}
