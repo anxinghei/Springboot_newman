@@ -5,10 +5,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DateUtil;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -36,31 +38,31 @@ public class inExcel {
 					int cells=row.getPhysicalNumberOfCells();
 					for(int k=0;k<cells;k++) {
 						HSSFCell cell=row.getCell(k);
-						cell.setCellType(HSSFCell.CELL_TYPE_STRING);
-						String cellValue = cell.getStringCellValue();
-			            if (cellValue == null) {
-			                cellValue = "";
-			            }
-			            switch (k) {
-			            	case 0:
-			            		id=cellValue;
-			            		break;
-			                case 1:
-			                	name=cellValue;
-			                	break;
-			                case 2:
-			                	sex=cellValue;
-			                    break;
-			                case 3:
-			                    nation=cellValue;
-			                    break;
-			                case 4:
-			                	if("m/d/yy".equals(cell.getCellStyle().getDataFormatString())) {
-			                		System.out.println("---");
-			                		date=DateToStr(cell.getDateCellValue());  
-			                	}								
-			                	break;
-			            }
+						switch (cell.getCellType()) {
+							case Cell.CELL_TYPE_STRING:
+								String cellValue = cell.getStringCellValue();
+								switch (k) {
+									case 0:
+										id=cellValue;
+										break;
+									case 1:
+										name=cellValue;
+										break;
+									case 2:
+										sex=cellValue;
+										break;
+									case 3:
+										nation=cellValue;
+										break;
+								}
+							break;
+						default:
+							if (HSSFDateUtil.isCellDateFormatted(cell)) {
+			                	date=DateToStr(cell.getDateCellValue());  
+							}
+							
+		                	break;
+						}
 					}
 				}
 			}
@@ -69,10 +71,11 @@ public class inExcel {
 		}
 		return id+"--"+name+"--"+sex+"--"+nation+"--"+date;
 	}
-	 public static String DateToStr(Date date) {
-	       java.text.SimpleDateFormat format = new java.text.SimpleDateFormat("yyyy-MM-dd");
-	       String str = format.format(date);
-	       return str;
-	    }
+
+	public static String DateToStr(Date date) {
+		java.text.SimpleDateFormat format = new java.text.SimpleDateFormat("m/d/yy");
+		String str = format.format(date);
+		return str;
+	}
 	
 }
