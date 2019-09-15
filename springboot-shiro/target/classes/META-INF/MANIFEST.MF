@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Built-By: Administrator
+Build-Jdk: 12.0.1
+Implementation-Title: springboot-shiro
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.itheima
+Implementation-Vendor: Pivotal Software, Inc.
+Implementation-URL: http://projects.spring.io/spring-boot/springboot-shi
+ ro/
+Created-By: Maven Integration for Eclipse
+
