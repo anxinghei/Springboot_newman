@@ -12,7 +12,7 @@ Thymeleaf的初体验：
     
 5、测试功能：遍历————（1）、普通遍历   （2）、带状态的遍历   （3）、结合下拉框    （4）、结合单选框 
  
-6、多选框CheckBox 
+6、多选框CheckBox  
 <input type="checkbox" th:each="rule:${firstRule}" th:value="${rule.id}"  th:text="${rule.title}" th:attr="checked=${rule.checked}" / >
   
 # people 项目
