@@ -1,52 +1,55 @@
 [toc]
-# thymeleaf ÏîÄ¿
-ThymeleafµÄ³õÌåÑé£º  
+# thymeleaf é¡¹ç›®
+Thymeleafçš„åˆä½“éªŒï¼š  
   
-1¡¢²âÊÔ Thymeleaf ºÍÈÈ²¿ÊğÊÇ·ñÉúĞ§  
+1ã€æµ‹è¯• Thymeleaf å’Œçƒ­éƒ¨ç½²æ˜¯å¦ç”Ÿæ•ˆ  
 
-2¡¢²âÊÔÒıÈëµÄ css/js ÎÄ¼şÊÇ·ñÉúĞ§  
+2ã€æµ‹è¯•å¼•å…¥çš„ css/js æ–‡ä»¶æ˜¯å¦ç”Ÿæ•ˆ  
   
-3¡¢²âÊÔ¹¦ÄÜ£º£¨1£©¡¢ÏÔÊ¾ ×ªÒåºÍ·Ç×ªÒåµÄ html ÎÄ±¾ 	£¨2£©¡¢ÏÔÊ¾¶ÔÏóÒÔ¼°¶ÔÏóÊôĞÔ  £¨3£©¡¢*{}·½Ê½ÏÔÊ¾ÊôĞÔ  £¨4£©¡¢ËãÊıÔËËã  £¨5£©¡¢ÒıÓÃÁíÒ»¸öHTMLµÄÒ³Ãæ  
+3ã€æµ‹è¯•åŠŸèƒ½ï¼šï¼ˆ1ï¼‰ã€æ˜¾ç¤º è½¬ä¹‰å’Œéè½¬ä¹‰çš„ html æ–‡æœ¬ 	ï¼ˆ2ï¼‰ã€æ˜¾ç¤ºå¯¹è±¡ä»¥åŠå¯¹è±¡å±æ€§  ï¼ˆ3ï¼‰ã€*{}æ–¹å¼æ˜¾ç¤ºå±æ€§  ï¼ˆ4ï¼‰ã€ç®—æ•°è¿ç®—  ï¼ˆ5ï¼‰ã€å¼•ç”¨å¦ä¸€ä¸ªHTMLçš„é¡µé¢  
   
-4¡¢²âÊÔ¹¦ÄÜ£ºÌõ¼şÅĞ¶Ï£¨²¼¶ûÖµ£©  
+4ã€æµ‹è¯•åŠŸèƒ½ï¼šæ¡ä»¶åˆ¤æ–­ï¼ˆå¸ƒå°”å€¼ï¼‰  
     
-5¡¢²âÊÔ¹¦ÄÜ£º±éÀú¡ª¡ª¡ª¡ª£¨1£©¡¢ÆÕÍ¨±éÀú   £¨2£©¡¢´ø×´Ì¬µÄ±éÀú   £¨3£©¡¢½áºÏÏÂÀ­¿ò    £¨4£©¡¢½áºÏµ¥Ñ¡¿ò  
-  
-# people ÏîÄ¿
-ThymeleafÊµÕ½£¨¼òµ¥µÄÈËÊÂ¹ÜÀíÏµÍ³£©£º 
-  
-1¡¢³¬Á´½Ó£¨ÎŞ²Î£¬ÓĞ²Î¿´ÏÂÒ»µã£©  
-listStaff.html¡¾th:href="@{/toAddStaff}"¡¿
-  
-2¡¢°´Å¥¹¦ÄÜ£ºÈ·ÈÏÉ¾³ı  
-listStaff.html¡¾onclick="return del()" th:href="@{/deleteStaff(id=${staff.id})}"¡¿  
-  
-3¡¢´òÓ¡SessionÖµ  
-listStaff.html¡¾th:text="${session.editMess}"¡¿  
-  
-4¡¢id£¨Êı×Ö£©ÅĞ¶Ï  
-page.html¡¾th:if="${manager.id > 1}"¡¿  
-  
-5¡¢ÀúÊ·»ØÍË  
-page.html¡¾onClick="javascript:history.back()"¡¿  
-  
-6¡¢±íµ¥¶¯×÷  
-editStaff.html¡¾th:action="@{/updateStaff}" method="post"¡¿  
-  
-7¡¢ÊäÈëÏîÄ¬ÈÏÖµ  
-editStaff.html¡¾type="text" th:value="${staff_edit.name}¡¿  
-  
-# security ÏîÄ¿  
-Spring Security °²È«ÉèÖÃ£º  
-  
-1¡¢½ÇÉ«ÓĞÄ¬ÈÏÇ°×º£ºROLE_ £¬Ã»ÓĞÌí¼ÓÔòÈ¨ÏŞ²»×ã£¬·ÃÎÊ403  
-  
-2¡¢Ê¹ÓÃThymeleaf£¬¼Ì³ĞWebMvcConfigureAdapterÖØĞ´addViewControllers·½·¨  
-¡¾registry.addViewController("/hello").setViewName("home")¡¿  
-·½¿É·ÃÎÊ/helloÇëÇóÌø×ªµ½home.htmlÒ³Ãæ¶ø²»ÊÇ404  
-  
-3¡¢Excel ÎÄ¼şµÄµ¼Èëµ¼³ö£¨¼òµ¥ÊµÏÖ£© 
+5ã€æµ‹è¯•åŠŸèƒ½ï¼šéå†â€”â€”â€”â€”ï¼ˆ1ï¼‰ã€æ™®é€šéå†   ï¼ˆ2ï¼‰ã€å¸¦çŠ¶æ€çš„éå†   ï¼ˆ3ï¼‰ã€ç»“åˆä¸‹æ‹‰æ¡†    ï¼ˆ4ï¼‰ã€ç»“åˆå•é€‰æ¡† 
  
-# shiro ÏîÄ¿  
+6ã€å¤šé€‰æ¡†CheckBox 
+<input type="checkbox" th:each="rule:${firstRule}" th:value="${rule.id}"  th:text="${rule.title}" th:attr="checked=${rule.checked}" / >
+  
+# people é¡¹ç›®
+Thymeleafå®æˆ˜ï¼ˆç®€å•çš„äººäº‹ç®¡ç†ç³»ç»Ÿï¼‰ï¼š 
+  
+1ã€è¶…é“¾æ¥ï¼ˆæ— å‚ï¼Œæœ‰å‚çœ‹ä¸‹ä¸€ç‚¹ï¼‰  
+listStaff.htmlã€th:href="@{/toAddStaff}"ã€‘
+  
+2ã€æŒ‰é’®åŠŸèƒ½ï¼šç¡®è®¤åˆ é™¤  
+listStaff.htmlã€onclick="return del()" th:href="@{/deleteStaff(id=${staff.id})}"ã€‘  
+  
+3ã€æ‰“å°Sessionå€¼  
+listStaff.htmlã€th:text="${session.editMess}"ã€‘  
+  
+4ã€idï¼ˆæ•°å­—ï¼‰åˆ¤æ–­  
+page.htmlã€th:if="${manager.id > 1}"ã€‘  
+  
+5ã€å†å²å›é€€  
+page.htmlã€onClick="javascript:history.back()"ã€‘  
+  
+6ã€è¡¨å•åŠ¨ä½œ  
+editStaff.htmlã€th:action="@{/updateStaff}" method="post"ã€‘  
+  
+7ã€è¾“å…¥é¡¹é»˜è®¤å€¼  
+editStaff.htmlã€type="text" th:value="${staff_edit.name}ã€‘  
+  
+# security é¡¹ç›®  
+Spring Security å®‰å…¨è®¾ç½®ï¼š  
+  
+1ã€è§’è‰²æœ‰é»˜è®¤å‰ç¼€ï¼šROLE_ ï¼Œæ²¡æœ‰æ·»åŠ åˆ™æƒé™ä¸è¶³ï¼Œè®¿é—®403  
+  
+2ã€ä½¿ç”¨Thymeleafï¼Œç»§æ‰¿WebMvcConfigureAdapteré‡å†™addViewControllersæ–¹æ³•  
+ã€registry.addViewController("/hello").setViewName("home")ã€‘  
+æ–¹å¯è®¿é—®/helloè¯·æ±‚è·³è½¬åˆ°home.htmlé¡µé¢è€Œä¸æ˜¯404  
+  
+3ã€Excel æ–‡ä»¶çš„å¯¼å…¥å¯¼å‡ºï¼ˆç®€å•å®ç°ï¼‰ 
  
-1¡¢À´Ô´£ºßÙÁ¨ßÙÁ¨
+# shiro é¡¹ç›®  
+ 
+1ã€æ¥æºï¼šå“”å“©å“”å“©
