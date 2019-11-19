@@ -16,8 +16,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.demo.freemarker.DocumentHandler;
 import com.example.demo.pojo.User;
+import com.example.demo.util.DocumentHandler;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
