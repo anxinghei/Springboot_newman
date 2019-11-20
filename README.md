@@ -52,4 +52,10 @@ Spring Security 安全设置：
  
 # shiro 项目  
  
-1、来源：哔哩哔哩
+1、来源：哔哩哔哩  
+  
+# freemarker 项目  
+  
+1、定位到项目路径  
+String path=System.getProperty("user.dir");  
+
