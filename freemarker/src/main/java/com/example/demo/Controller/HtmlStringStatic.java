@@ -15,7 +15,7 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
-public class htmlStringStatic {
+public class HtmlStringStatic {
 
 	public static void main(String[] args) throws IOException, TemplateException {
 	    // 创建配置类

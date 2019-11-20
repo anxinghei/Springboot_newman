@@ -38,7 +38,7 @@ public class HtmlGetting {
 		// 第三步：设置模板文件使用的字符集。一般就是utf-8.
 		configuration.setDefaultEncoding("utf-8");
 		// 第四步：加载一个模板，创建一个模板对象。
-		Template template = configuration.getTemplate("DownLoading.ftl");
+		Template template = configuration.getTemplate("htmlList.ftl");
 		// 第五步：创建一个模板使用的数据集，可以是pojo也可以是map。一般是Map。
 		Map dataModel = new HashMap<>();
 		// 向数据集中添加数据
@@ -46,7 +46,7 @@ public class HtmlGetting {
 		dataModel.put("userList", users);
 		// 第六步：创建一个Writer对象，一般创建一FileWriter对象，指定生成的文件名。
 		Writer out = new FileWriter(new File(
-				"D:\\E_softwareFiles\\Eclipse\\Springboot_newman\\freemarker\\src\\main\\resources\\templates\\DownLoading.html"));
+				"D:\\E_softwareFiles\\Eclipse\\Springboot_newman\\freemarker\\src\\main\\resources\\templates\\absolutePath.html"));
 		// 第七步：调用模板对象的process方法输出文件。
 		template.process(dataModel, out);
 		// 第八步：关闭流。
@@ -67,7 +67,7 @@ public class HtmlGetting {
 		// 设置字符集
 		configuration.setDefaultEncoding("utf-8");
 		// 加载模板
-		Template template = configuration.getTemplate("DownLoading.ftl");
+		Template template = configuration.getTemplate("htmlList.ftl");
 		// 数据模型
 		Map dataModel = new HashMap<>();
 		List<User> users = User.initList();
@@ -82,7 +82,7 @@ public class HtmlGetting {
 		String path=System.getProperty("user.dir");
 		System.out.println(path);
 		// 输出文件
-		FileOutputStream fileOutputStream = new FileOutputStream(new File(path + "/src/main/resources/templates/DownLoading.html"));
+		FileOutputStream fileOutputStream = new FileOutputStream(new File(path + "/src/main/resources/templates/classPath.html"));
 		int copy = IOUtils.copy(inputStream, fileOutputStream);
 		return "It's OK";
 	}

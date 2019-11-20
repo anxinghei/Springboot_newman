@@ -21,35 +21,6 @@ public class User {
 		return users;
 	}
 	
-	public static List<Map<String, Object>> initMap(){
-		List<Map<String, Object>> users=new ArrayList<Map<String,Object>>(); 		
-        Map<String, Object> map=new HashMap<String, Object>();  
-        map.put("userName", "张三");  
-        map.put("userPassword", "890123");    
-        map.put("age", 18);    
-        users.add(map);  
-        map=new HashMap<String, Object>();
-        map.put("userName", "李四");  
-        map.put("userPassword", "901234");    
-        map.put("age", 23);    
-        users.add(map); 
-        map=new HashMap<String, Object>();  
-        map.put("userName", "王五");  
-        map.put("userPassword", "012345");    
-        map.put("age", 14);    
-        users.add(map);  
-        map=new HashMap<String, Object>();
-        map.put("userName", "赵六");  
-        map.put("userPassword", "901234");    
-        map.put("age", 23);    
-        users.add(map);  
-        map=new HashMap<String, Object>();
-        map.put("userName", "田七");  
-        map.put("userPassword", "234567");    
-        map.put("age", 32);    
-        users.add(map);         
-		return users;
-	}
 	
 	public User() {
 		super();
