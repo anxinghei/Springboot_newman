@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>静态验证码</title>
+
+<script type="text/javascript" src="../../js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<link type="text/css" href="bootstrap/css/bootstrap.min.css"  rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}"/>
+<script type="text/javascript" src="../../bootstrap/js/bootstrap.min.js" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+	<br><br>
+	<div class="form-group">
+		<label for="inputPassword">普通验证码</label><br><br>
+		<div class="row">
+			<div class="col-lg-2">
+				<input class="form-control" name="verifyCode" id="verifyCode"
+					placeholder="点击图片更换验证码">
+			</div>
+			<div class="col-lg-6">
+				<img height="33px" id="codeImg" alt="点击更换" title="点击更换"
+					th:src="@{/getCode}" />
+			</div>
+		</div>
+	</div>
+	
+	<br><br>
+	<div class="form-group">
+		<label for="inputPassword">Gif验证码</label><br><br>
+		<div class="row">
+			<div class="col-lg-2">
+				<input class="form-control"  id="gifCode"
+					placeholder="请输入验证码">
+			</div>
+			<div class="col-lg-6">
+				<img height="33px" th:src="@{/getGifCode}" />
+			</div>
+		</div>
+	</div>	
+	
+	
+<script type="text/javascript">
+	$('#codeImg').click(function() {
+		$("#codeImg").attr("src", "/code/getCode");
+	});
+</script>
+
+</body>
+</html>
