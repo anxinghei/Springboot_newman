@@ -59,3 +59,16 @@ Spring Security 安全设置：
 1、定位到项目路径  
 String path=System.getProperty("user.dir");  
 
+# captcha项目  
+  
+1、普通验证码  
+  
+2、gif验证码 
+  
+# javaMail项目  
+  
+1、简单邮件，带附件邮件，带图片邮件  
+  
+2、freemarker模板邮件，thymeleaf模板邮件  
+  
+  
