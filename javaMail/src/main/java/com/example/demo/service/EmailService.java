@@ -74,4 +74,19 @@ public class EmailService {
 		}			
 	}
 	
+	public void sendHtmlEmail(String from,String to,String title,String content)  {
+		try {
+			MimeMessage message=mailSender.createMimeMessage();
+			MimeMessageHelper helper= new MimeMessageHelper(message, true);
+			helper.setFrom(from);
+			helper.setTo(to);
+			helper.setSubject(title);
+			helper.setText(content,true);
+			// 发送邮件
+			mailSender.send(message);
+		} catch (Exception e) {
+			System.out.println("发送失败");
+		}
+		
+	}
 }
