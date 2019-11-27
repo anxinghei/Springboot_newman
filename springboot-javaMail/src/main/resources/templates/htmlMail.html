@@ -6,19 +6,17 @@
 </head>
 <body>
 	
-<div>这是${title}</div>
+<div th:text="${title}"></div>
 
 <table border="1">
 	<tr>
 		<td>用户名</td>
 		<td>性别</td>
 	</tr>
-	<#list userList as user>
-		<tr>	
-			<td th:text="${user.userName}"></td>
-			<td th:text="${user.sex}"></td>
-		</tr>
-	</#list>
+	<tr th:each="user: ${userList}">	
+		<td th:text="${user.userName}"></td>
+		<td th:text="${user.sex}"></td>
+	</tr>
 </table>
 
 </body>
