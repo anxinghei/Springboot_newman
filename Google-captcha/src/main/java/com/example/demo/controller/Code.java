@@ -8,6 +8,9 @@ public class Code {
 
 	@RequestMapping("getCodes")
 	public String getCodes() {
+		HuTool2Codes.lineCode();
+		HuTool2Codes.circleCode();
+		HuTool2Codes.shearCode();
 		return "codes";
 	}
 	
